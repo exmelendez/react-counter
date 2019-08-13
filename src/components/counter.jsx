@@ -1,36 +1,40 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Counter extends Component {
-  render() {
-    return (
-      <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
-      </div>
-    );
-  }
-
-  getBadgeClasses() {
+const Counter = props => {
+  const getBadgeClasses = () => {
     let classes = "badge m-2 badge-";
-    classes += this.props.counter.value === 0 ? "warning" : "primary";
+    classes += props.counter.value === 0 ? "warning" : "primary";
     return classes;
-  }
+  };
 
-  formatCount() {
-    const { value: count } = this.props.counter;
+  const formatCount = () => {
+    const { value: count } = props.counter;
     return count === 0 ? "Zero" : count;
-  }
-}
+  };
+
+  return (
+    <div>
+      <span className={getBadgeClasses()}>{formatCount()}</span>
+      <button
+        onClick={() => props.onIncrement(props.counter)}
+        className="btn btn-secondary btn-sm m-2"
+      >
+        +
+      </button>
+      <button
+        onClick={() => props.onDecrease(props.counter)}
+        className="btn btn-secondary btn-sm"
+      >
+        -
+      </button>
+      <button
+        onClick={() => props.onDelete(props.counter.id)}
+        className="btn btn-danger btn-sm m-2"
+      >
+        Delete
+      </button>
+    </div>
+  );
+};
 
 export default Counter;
