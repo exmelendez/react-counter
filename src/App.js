@@ -13,6 +13,12 @@ class App extends Component {
     ]
   };
 
+  handleAdd = () => {
+    const counters = this.state.counters.slice(0);
+    counters.push({ id: 7, value: 7 });
+    this.setState({ counters });
+  };
+
   handleDecrease = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -62,6 +68,7 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDecrease={this.handleDecrease}
             onDelete={this.handleDelete}
+            onAdd={this.handleAdd}
           />
         </main>
       </React.Fragment>
