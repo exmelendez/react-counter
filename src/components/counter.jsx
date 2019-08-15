@@ -3,12 +3,12 @@ import React from "react";
 const Counter = props => {
   const getBadgeClasses = () => {
     let classes = "badge m-2 badge-";
-    classes += props.counter.value === 0 ? "warning" : "primary";
+    classes += props.counter.qty === 0 ? "warning" : "primary";
     return classes;
   };
 
   const formatCount = () => {
-    const { value: count } = props.counter;
+    const { qty: count } = props.counter;
     return count === 0 ? "Zero" : count;
   };
 
