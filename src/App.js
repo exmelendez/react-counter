@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
+import Items from "./components/Items";
 import "./App.css";
 
 class App extends Component {
   state = {
-    counters: [
-      { id: 1, qty: 1, cost: 5.25 },
-      { id: 2, qty: 1, cost: 5.25 },
-      { id: 3, qty: 1, cost: 5.25 },
-      { id: 4, qty: 1, cost: 5.25 }
-    ]
+    counters: [{ id: 1, qty: 1, cost: 5.5 }, { id: 2, qty: 1, cost: 5.5 }]
   };
 
   handleAdd = () => {
@@ -27,7 +23,6 @@ class App extends Component {
 
     if (counters[index].qty > 0) {
       counters[index].qty--;
-      // counters[index].cost = counters[index].cost - counters[index].cost;
       this.setState({ counters });
     }
   };
@@ -42,7 +37,6 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].qty++;
-    // counters[index].cost = counters[index].cost + counters[index].cost;
     this.setState({ counters });
   };
 
@@ -74,6 +68,7 @@ class App extends Component {
               return acc + c.cost;
             }, 0)}
         />
+        <Items />
         <main className="container">
           <Counters
             counters={this.state.counters}
