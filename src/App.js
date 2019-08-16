@@ -10,13 +10,21 @@ class App extends Component {
   };
 
   handleAdd = (id, title, cost) => {
-    /*console.log(
-      `we have clicked the btn for the ${title} with an ID of ${id} and a cost of ${cost}`
-    );
-    */
     const counters = [...this.state.counters];
 
-    counters.push({ id: id, qty: 1, cost: cost });
+    if (counters.length < 1) {
+      counters.push({ id: id, qty: 1, cost: cost });
+    } else {
+      counters.map(c => {
+        if (c.id === id) {
+          c.qty = c.qty + c.qty;
+        } else {
+          counters.push({ id: id, qty: 1, cost: cost });
+        }
+        return c;
+      });
+    }
+
     this.setState({ counters });
   };
 
