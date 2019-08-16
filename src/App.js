@@ -6,13 +6,17 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    counters: [{ id: 1, qty: 1, cost: 5.5 }, { id: 2, qty: 1, cost: 5.5 }]
+    counters: []
   };
 
-  handleAdd = () => {
+  handleAdd = (id, title, cost) => {
+    /*console.log(
+      `we have clicked the btn for the ${title} with an ID of ${id} and a cost of ${cost}`
+    );
+    */
     const counters = [...this.state.counters];
 
-    counters.push({ id: 7, qty: 1, cost: 1.0 });
+    counters.push({ id: id, qty: 1, cost: cost });
     this.setState({ counters });
   };
 
@@ -68,7 +72,7 @@ class App extends Component {
               return acc + c.cost;
             }, 0)}
         />
-        <Items />
+        <Items onAdd={this.handleAdd} />
         <main className="container">
           <Counters
             counters={this.state.counters}
@@ -76,7 +80,6 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDecrease={this.handleDecrease}
             onDelete={this.handleDelete}
-            onAdd={this.handleAdd}
           />
         </main>
       </React.Fragment>
