@@ -10,10 +10,12 @@ export class Items extends Component {
   };
 
   render() {
+    const { onAdd } = this.props;
+
     return (
       <div style={divStyle}>
         {this.state.items.map(c => (
-          <Item key={c.id} item={c} />
+          <Item onAdd={onAdd} key={c.id} item={c} />
         ))}
       </div>
     );

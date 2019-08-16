@@ -2,11 +2,11 @@ import React from "react";
 import ItemTitle from "./ItemTitle";
 import ItemBtn from "./ItemBtn";
 
-const Item = ({ item }) => {
+const Item = ({ item, onAdd }) => {
   return (
     <div>
       <ItemTitle title={item.item} price={item.cost} />
-      <ItemBtn itemId={item.id} />
+      <ItemBtn onAdd={onAdd} item={item} />
     </div>
   );
 };
